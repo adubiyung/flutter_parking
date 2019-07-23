@@ -6,6 +6,9 @@ class LoginScreen2 extends StatefulWidget {
 }
 
 class _LoginScreenState2 extends State<LoginScreen2> {
+  Color _mainColor = Color(0xFFF48023);
+  Color _bgColor = Color(0xFF333333);
+  
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
