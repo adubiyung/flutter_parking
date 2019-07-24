@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/gestures.dart';
-import 'package:flutter_parking_project/view/screen/login_screen.dart';
+import 'package:flutter_parking_project/views/pages/login_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override

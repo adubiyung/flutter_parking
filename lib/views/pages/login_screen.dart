@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutter_parking_project/view/screen/otp_screen.dart';
+import 'package:flutter_parking_project/views/pages/otp_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override

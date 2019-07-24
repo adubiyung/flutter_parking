@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_parking_project/view/screen/splashscreen.dart';
+import 'package:flutter_parking_project/views/pages/splashscreen.dart';
 
 void main() => runApp(MyApp());
 
