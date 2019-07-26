@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart' as prefix0;
-import 'package:flutter_parking_project/views/pages/login_screen.dart';
-import 'package:flutter_parking_project/views/pages/otp_screen.dart';
-import 'package:flutter_parking_project/views/pages/welcome_page.dart';
+import 'package:flutter_parking_project/views/pages/login_page.dart';
+import 'package:flutter_parking_project/views/pages/otp_page.dart';
 
 var _nameCon = TextEditingController();
 var _emailCon = TextEditingController();
@@ -13,10 +11,10 @@ final FocusNode _phoneFocus = FocusNode();
 
 class RegisterPage extends StatefulWidget {
   @override
-  _RegisterPage createState() => _RegisterPage();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _RegisterPage extends State<RegisterPage> {
+class _RegisterPageState extends State<RegisterPage> {
   Color _mainColor = Color(0xFFF48023);
 
   @override
@@ -203,7 +201,7 @@ class _RegisterPage extends State<RegisterPage> {
     Navigator.of(context).push(PageRouteBuilder(
       maintainState: true,
       opaque: true,
-      pageBuilder: (context, _, __) => new OtpScreen(),
+      pageBuilder: (context, _, __) => new OtpPage(),
     ));
   }
 
@@ -211,7 +209,7 @@ class _RegisterPage extends State<RegisterPage> {
     Navigator.of(context).push(PageRouteBuilder(
       maintainState: true,
       opaque: true,
-      pageBuilder: (context, _, __) => new LoginScreen(),
+      pageBuilder: (context, _, __) => new LoginPage(),
     ));
   }
 

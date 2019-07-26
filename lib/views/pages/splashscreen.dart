@@ -6,7 +6,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/views/pages/welcome_page.dart';
-import 'package:flutter_parking_project/views/pages/welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -19,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     new Timer(const Duration(seconds: 3), _moveToWelcome);
   }
-  
+
   @override
   Widget build(BuildContext context) {
     Widget _background = new Scaffold(
@@ -39,9 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Widget _compile = new Scaffold(
       body: Stack(
-        children: <Widget>[
-          _background
-        ],
+        children: <Widget>[_background],
       ),
     );
 
@@ -50,18 +47,17 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _moveToWelcome() {
     Navigator.of(context).pushReplacement(PageRouteBuilder(
-      maintainState: true,
+        maintainState: true,
         opaque: true,
         // pageBuilder: (context, _, __) => new WelcomeScreen(),
         pageBuilder: (context, _, __) => new WelcomePage(),
-      transitionDuration: const Duration(seconds: 2),
-      transitionsBuilder: (context, anim1, anim2, child) {
-        return new FadeTransition(
+        transitionDuration: const Duration(seconds: 2),
+        transitionsBuilder: (context, anim1, anim2, child) {
+          return new FadeTransition(
             child: child,
             opacity: anim1,
-        );
-      }
-    ));
+          );
+        }));
   }
 
   // void _moveToInformation() {

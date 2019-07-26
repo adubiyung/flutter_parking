@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
     Navigator.of(context).push(PageRouteBuilder(
       maintainState: true,
       opaque: true,
-      pageBuilder: (context, _, __) => new OtpScreen(),
+      pageBuilder: (context, _, __) => new OtpPage(),
     ));
   }
 }

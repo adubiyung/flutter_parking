@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_parking_project/views/pages/home_page.dart';
 import 'package:flutter_parking_project/views/pages/login_page.dart';
+import 'package:flutter_parking_project/views/pages/order_page.dart';
 import 'package:flutter_parking_project/views/pages/register_page.dart';
 
 class WelcomePage extends StatefulWidget {
   @override
-  _WelcomePage createState() => _WelcomePage();
+  _WelcomePageState createState() => _WelcomePageState();
 }
 
-class _WelcomePage extends State<WelcomePage> {
+class _WelcomePageState extends State<WelcomePage> {
   Color _mainColor = Color(0xFFF48023);
   Color _bgColor = Color(0xFF333333);
   Color _whiteColor = Color(0xFFFFFFFF);

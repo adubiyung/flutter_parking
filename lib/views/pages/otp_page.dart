@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_parking_project/views/pages/welcome_page.dart';
+import 'package:flutter_parking_project/views/pages/landing_page.dart';
 
 final FocusNode _firstFocus = FocusNode();
 final FocusNode _secondFocus = FocusNode();
@@ -124,7 +124,7 @@ class _OtpPageState extends State<OtpPage> {
                     focusNode: _fifthFocus,
                     onChanged: (String text) {
                       if (text.length == 1) {
-                        _moveToHome();
+                        _moveToLandingPage();
                       }
                     },
                   ),
@@ -161,11 +161,11 @@ class _OtpPageState extends State<OtpPage> {
     FocusScope.of(context).requestFocus(nextFocus);
   }
 
-  void _moveToHome() {
+  void _moveToLandingPage() {
     Navigator.of(context).push(PageRouteBuilder(
       maintainState: true,
       opaque: true,
-      pageBuilder: (context, _, __) => new WelcomePage(),
+      pageBuilder: (context, _, __) => new LandingPage(),
     ));
   }
 }
