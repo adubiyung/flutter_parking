@@ -5,6 +5,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_parking_project/views/pages/welcome_page.dart';
 import 'package:flutter_parking_project/views/pages/welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -51,7 +52,8 @@ class _SplashScreenState extends State<SplashScreen> {
     Navigator.of(context).pushReplacement(PageRouteBuilder(
       maintainState: true,
         opaque: true,
-        pageBuilder: (context, _, __) => new WelcomeScreen(),
+        // pageBuilder: (context, _, __) => new WelcomeScreen(),
+        pageBuilder: (context, _, __) => new WelcomePage(),
       transitionDuration: const Duration(seconds: 2),
       transitionsBuilder: (context, anim1, anim2, child) {
         return new FadeTransition(
