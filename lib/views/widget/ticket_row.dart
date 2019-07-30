@@ -1,21 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/models/ticket.dart';
+import 'package:flutter_parking_project/views/pages/detail_ticket_page.dart';
+import 'package:flutter_parking_project/views/pages/login_page.dart';
 
 class TicketRow extends StatelessWidget {
   final Ticket ticket;
   TicketRow(this.ticket);
+  Color _mainColor = Color(0xFFF48023);
 
   @override
   Widget build(BuildContext context) {
-    final TicketThumbnail = new Container(
-      margin: new EdgeInsets.symmetric(vertical: 16.0),
+    final TicketThumbnailLeft = new Container(
+      margin: new EdgeInsets.symmetric(vertical: 30.0),
       alignment: FractionalOffset.centerLeft,
-      // child: new Image(
-      //   color: Colors.white,
-      //   height: 92.0,
-      //   width: 92.0,
-      // ),
-      child: Icon(Icons.local_airport),
+      width: 25.0,
+      height: 80.0,
+      decoration: new BoxDecoration(
+        color: _mainColor,
+        shape: BoxShape.circle,
+        boxShadow: [BoxShadow(color: _mainColor, offset: Offset.zero)],
+      ),
+    );
+
+    final TicketThumbnailRight = new Container(
+      margin: EdgeInsets.symmetric(vertical: 30.0, horizontal: 200.0),
+      alignment: FractionalOffset.centerRight,
+      width: 23.0,
+      height: 80.0,
+      decoration: new BoxDecoration(
+        color: Colors.black,
+        shape: BoxShape.circle,
+      ),
+    );
+
+    final TicketThumbnailIcon = new ListTile(
+      contentPadding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 22.0),
+      leading: Container(
+        padding: EdgeInsets.only(right: 12.0),
+        decoration: BoxDecoration(
+          border: Border(right: BorderSide(width: 2.0, color: Colors.white24)),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(
+              Icons.drive_eta,
+              color: Colors.white,
+            ),
+            Text('R 8655 BS', style: TextStyle(color: Colors.white, fontSize: 10),)
+          ],
+        ),
+      ),
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => DetailTicketPage()));
+      },
     );
 
     final baseTextStyle = const TextStyle(fontFamily: 'Poppins');
@@ -23,20 +61,12 @@ class TicketRow extends StatelessWidget {
         color: const Color(0xffb6b2df),
         fontSize: 9.0,
         fontWeight: FontWeight.w400);
-    final subHeaderTextStyle = regularTextStyle.copyWith(fontSize: 12.0);
+    final subHeaderTextStyle = regularTextStyle.copyWith(fontSize: 10.0);
     final headerTextStyle = baseTextStyle.copyWith(
-        color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.w600);
-
-    Widget _TicketValue({String value, /*String image*/}) {
-      return new Row(children: <Widget>[
-        //new Image.asset(image, height: 12.0),
-        new Container(width: 8.0),
-        new Text(ticket.durationTransaction, style: regularTextStyle),
-      ]);
-    }
+        color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.w600);
 
     final TicketCardContent = new Container(
-      margin: new EdgeInsets.fromLTRB(76.0, 16.0, 16.0, 16.0),
+      margin: new EdgeInsets.fromLTRB(90.0, 16.0, 16.0, 16.0),
       constraints: new BoxConstraints.expand(),
       child: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,13 +82,23 @@ class TicketRow extends StatelessWidget {
               color: new Color(0xff00c6ff)),
           new Row(
             children: <Widget>[
-              Expanded(
-                  child: _TicketValue(
-                      value: ticket.durationTransaction,)
+              Container(
+                width: 8.0,
               ),
-              new Expanded(
-                  child: _TicketValue(
-                      value: ticket.nameWarden,)
+              Expanded(
+                child: Text(
+                  ticket.durationTransaction,
+                  style: regularTextStyle,
+                ),
+              ),
+              Container(
+                width: 8.0,
+              ),
+              Expanded(
+                child: Text(
+                  ticket.statusTransaction,
+                  style: regularTextStyle,
+                ),
               ),
             ],
           ),
@@ -69,7 +109,7 @@ class TicketRow extends StatelessWidget {
     final TicketCard = new Container(
       child: TicketCardContent,
       height: 124.0,
-      margin: new EdgeInsets.only(left: 46.0),
+      margin: new EdgeInsets.only(left: 10.0, right: 10.0),
       decoration: new BoxDecoration(
         color: new Color(0xFF333366),
         shape: BoxShape.rectangle,
@@ -87,14 +127,25 @@ class TicketRow extends StatelessWidget {
     return new Container(
         height: 120.0,
         margin: const EdgeInsets.symmetric(
-          vertical: 16.0,
-          horizontal: 24.0,
+          vertical: 12.0,
+          horizontal: 14.0,
         ),
         child: new Stack(
           children: <Widget>[
             TicketCard,
-            TicketThumbnail,
+            // TicketThumbnailRight,
+            // TicketThumbnailLeft,
+            TicketThumbnailIcon
           ],
         ));
+
+    void _moveToLogin() {
+    Navigator.of(context).push(PageRouteBuilder(
+      maintainState: true,
+      opaque: true,
+      pageBuilder: (context, _, __) => new LoginPage(),
+    ));
+  }
+
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_parking_project/views/pages/order_page2.dart';
+import 'package:flutter_parking_project/views/widget/order_list.dart';
 
 class OrderPage extends StatefulWidget {
   @override
@@ -23,7 +23,7 @@ class _OrderPageState extends State<OrderPage> {
           ),
           actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.library_books, color: Colors.white70,),
+            icon: Icon(Icons.library_books, color: Colors.white70,)
           )
         ],
         leading: Container(),
@@ -31,7 +31,7 @@ class _OrderPageState extends State<OrderPage> {
       ),
       body: Column(
         children: <Widget>[
-          OrderPage2(),
+          OrderList(),
         ],
       ),
     );

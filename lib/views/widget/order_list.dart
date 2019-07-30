@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/models/ticket.dart';
 import 'package:flutter_parking_project/views/widget/ticket_row.dart';
 
-class OrderPage2 extends StatelessWidget {
+class OrderList extends StatelessWidget {
   Color _mainColor = Color(0xFFF48023);
 
   @override
@@ -15,7 +15,7 @@ class OrderPage2 extends StatelessWidget {
           shrinkWrap: false,
           slivers: <Widget>[
             new SliverPadding(
-              padding: const EdgeInsets.symmetric(vertical: 24.0),
+              padding: const EdgeInsets.symmetric(vertical: 12.0),
               sliver: new SliverList(
                 delegate: new SliverChildBuilderDelegate(
                   (context, index) => new TicketRow(ticketList[index]),

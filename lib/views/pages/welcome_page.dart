@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_parking_project/views/pages/account_page.dart';
+import 'package:flutter_parking_project/views/pages/detail_ticket_page.dart';
 import 'package:flutter_parking_project/views/pages/home_page.dart';
 import 'package:flutter_parking_project/views/pages/login_page.dart';
 import 'package:flutter_parking_project/views/pages/order_page.dart';
