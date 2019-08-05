@@ -12,23 +12,23 @@ class _OrderPageState extends State<OrderPage> {
   @override
   Widget build(BuildContext context) {
     Widget _compilePage = Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70.0),
-        child: AppBar(
-          // elevation: 0.0,
-          backgroundColor: _mainColor,
-          title: Text(
-            'Order List',
-            style: TextStyle(fontSize: 12),
-          ),
-          actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.library_books, color: Colors.white70,)
-          )
-        ],
-        leading: Container(),
-        ),
-      ),
+      // appBar: PreferredSize(
+      //   preferredSize: Size.fromHeight(70.0),
+      //   child: AppBar(
+      //     // elevation: 0.0,
+      //     backgroundColor: _mainColor,
+      //     title: Text(
+      //       'Order List',
+      //       style: TextStyle(fontSize: 12),
+      //     ),
+      //     actions: <Widget>[
+      //     IconButton(
+      //       icon: Icon(Icons.library_books, color: Colors.white70,)
+      //     )
+      //   ],
+      //   leading: Container(),
+      //   ),
+      // ),
       body: Column(
         children: <Widget>[
           OrderList(),

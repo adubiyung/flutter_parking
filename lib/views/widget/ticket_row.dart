@@ -10,28 +10,6 @@ class TicketRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TicketThumbnailLeft = new Container(
-      margin: new EdgeInsets.symmetric(vertical: 30.0),
-      alignment: FractionalOffset.centerLeft,
-      width: 25.0,
-      height: 80.0,
-      decoration: new BoxDecoration(
-        color: _mainColor,
-        shape: BoxShape.circle,
-        boxShadow: [BoxShadow(color: _mainColor, offset: Offset.zero)],
-      ),
-    );
-
-    final TicketThumbnailRight = new Container(
-      margin: EdgeInsets.symmetric(vertical: 30.0, horizontal: 200.0),
-      alignment: FractionalOffset.centerRight,
-      width: 23.0,
-      height: 80.0,
-      decoration: new BoxDecoration(
-        color: Colors.black,
-        shape: BoxShape.circle,
-      ),
-    );
 
     final TicketThumbnailIcon = new ListTile(
       contentPadding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 22.0),

@@ -14,6 +14,15 @@ class OrderList extends StatelessWidget {
           scrollDirection: Axis.vertical,
           shrinkWrap: false,
           slivers: <Widget>[
+            SliverAppBar(
+              title: Text("Orders"),
+              backgroundColor: _mainColor,
+              expandedHeight: 80.0,
+              // flexibleSpace: FlexibleSpaceBar(
+              //   background: Image.network(
+              //       'https://cdn-images-1.medium.com/max/2000/1*GqdzzfB_BHorv7V2NV7Jgg.jpeg'),
+              // ),
+            ),
             new SliverPadding(
               padding: const EdgeInsets.symmetric(vertical: 12.0),
               sliver: new SliverList(

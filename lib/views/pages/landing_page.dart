@@ -1,4 +1,5 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/views/pages/account_page.dart';
 import 'package:flutter_parking_project/views/pages/home_page.dart';
@@ -25,35 +26,19 @@ class _LandingPageState extends State<LandingPage> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-
     Widget _compileWidget = Scaffold(
-      bottomNavigationBar: CurvedNavigationBar(
-        color: Colors.white,
-        backgroundColor: _mainColor,
-        items: <Widget>[
-          Icon(
-            Icons.location_searching,
-            size: 30,
-          ),
-          Icon(
-            Icons.list,
-            size: 30,
-            semanticLabel: 'Orders',
-          ),
-          Icon(
-            Icons.line_style,
-            size: 30,
-            semanticLabel: '',
-          ),
-          Icon(
-            Icons.person,
-            size: 30,
-          ),
+      bottomNavigationBar: FancyBottomNavigation(
+        tabs: [
+          TabData(iconData: Icons.location_searching, title: "Booking"),
+          TabData(iconData: Icons.list, title: "OTS"),
+          TabData(iconData: Icons.line_style, title: "Orders"),
+          TabData(iconData: Icons.person, title: "Account"),
         ],
-        onTap: (index) {
+        circleColor: _mainColor,
+        inactiveIconColor: _mainColor,
+        onTabChangedListener: (position) {
           setState(() {
-            _page = index;
+            _page = position;
           });
         },
       ),
