@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/models/ticket.dart';
 import 'package:flutter_parking_project/views/widget/ticket_row.dart';
 
-class OrderList extends StatelessWidget {
+class OrderListview extends StatelessWidget {
   Color _mainColor = Color(0xFFF48023);
 
   @override
@@ -17,7 +17,8 @@ class OrderList extends StatelessWidget {
             SliverAppBar(
               title: Text("Orders"),
               backgroundColor: _mainColor,
-              expandedHeight: 80.0,
+              pinned: true,
+              // expandedHeight: 80.0,
               // flexibleSpace: FlexibleSpaceBar(
               //   background: Image.network(
               //       'https://cdn-images-1.medium.com/max/2000/1*GqdzzfB_BHorv7V2NV7Jgg.jpeg'),

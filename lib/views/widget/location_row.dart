@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/models/location_model.dart';
+import 'package:flutter_parking_project/views/pages/location_search_page.dart';
 
 class LocationRow extends StatelessWidget {
   final Location_model location_model;
@@ -9,29 +10,55 @@ class LocationRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _locationCardIcon = new ListTile(
-      contentPadding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 22.0),
+      contentPadding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 35.0),
       leading: Container(
-        padding: EdgeInsets.only(right: 2.0),
+        padding: EdgeInsets.only(right: 15.0),
         decoration: BoxDecoration(
-          border: Border(right: BorderSide(width: 2.0, color: Colors.grey)),
+          border: Border(right: BorderSide(width: 1.0, color: Colors.grey)),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Icon(
-              Icons.drive_eta,
-              color: Colors.grey,
-            ),
-          ],
-        ),
+        child: Icon(Icons.drive_eta),
+      ),
+      trailing: Icon(
+        Icons.arrow_forward_ios,
+        size: 15.0,
       ),
       // onTap: () {
       //   Navigator.push(context, MaterialPageRoute(builder: (context) => DetailTicketPage()));
       // },
     );
 
+    final _locationLotIcon = new Container(
+      child: Row(
+        children: <Widget>[
+          Icon(
+            Icons.drive_eta,
+            size: 13.0,
+          ),
+          Text(
+            " " + location_model.spaceLocation,
+            style: TextStyle(fontSize: 10.0),
+          ),
+        ],
+      ),
+    );
+
+    final _locationRangeIcon = new Container(
+      child: Row(
+        children: <Widget>[
+          Icon(
+            Icons.near_me,
+            size: 13.0,
+          ),
+          Text(
+            " " + "0.6 km",
+            style: TextStyle(fontSize: 10.0),
+          ),
+        ],
+      ),
+    );
+
     final _locationCardContent = new Container(
-      margin: EdgeInsets.fromLTRB(90.0, 16.0, 16.0, 16.0),
+      margin: EdgeInsets.fromLTRB(90.0, 6.0, 60.0, 6.0),
       constraints: BoxConstraints.expand(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,30 +71,47 @@ class LocationRow extends StatelessWidget {
             style: TextStyle(fontSize: 15.0),
           ),
           Container(
+            height: 4.0,
+          ),
+          Text(location_model.areaLocation),
+          Container(
             height: 5.0,
           ),
-          Text(location_model.areaLocation)
+          Row(
+            children: <Widget>[
+              Icon(
+                Icons.star,
+                size: 13.0,
+              ),
+              Text(
+                " " + location_model.rateLocation,
+                style: TextStyle(fontSize: 13.0),
+              ),
+              Container(
+                width: 15.0,
+                child: Icon(
+                  Icons.lens,
+                  size: 3.0,
+                ),
+              ),
+              Text(
+                location_model.typeLocation,
+                style: TextStyle(fontSize: 13.0),
+              ),
+            ],
+          ),
+          Container(
+            height: 6.0,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              _locationLotIcon,
+              _locationRangeIcon,
+            ],
+          ),
         ],
       ),
-    );
-
-    final _locationCardIconRight = new ListTile(
-      contentPadding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 22.0),
-      leading: Container(
-        padding: EdgeInsets.only(right: 12.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Icon(
-              Icons.drive_eta,
-              color: Colors.grey,
-            ),
-          ],
-        ),
-      ),
-      // onTap: () {
-      //   Navigator.push(context, MaterialPageRoute(builder: (context) => DetailTicketPage()));
-      // },
     );
 
     final _locationCard = new Container(

@@ -2,16 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/models/location_model.dart';
-import 'package:flutter_parking_project/models/ticket.dart';
+import 'package:flutter_parking_project/views/pages/location_search_page.dart';
 import 'package:flutter_parking_project/views/widget/button_search.dart';
-import 'package:flutter_parking_project/views/widget/location_list.dart';
 import 'package:flutter_parking_project/views/widget/location_row.dart';
-import 'package:flutter_parking_project/views/widget/order_list.dart';
-import 'package:flutter_parking_project/views/widget/search_destination.dart';
-import 'package:flutter_parking_project/views/widget/ticket_row.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:location/location.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class HomePage extends StatefulWidget {
@@ -78,11 +72,22 @@ class _HomePageState extends State<HomePage> {
     Widget _middleWidget = new Container(
       child: Column(
         children: <Widget>[
-          LocationRow(locationList[0]),
-          LocationRow(locationList[1]),
-          Container(height: 5.0,),
+          GestureDetector(
+            child: LocationRow(locationList[0]),
+            onTap: _moveToSearch,
+          ),
+          GestureDetector(
+            child: LocationRow(locationList[1]),
+            onTap: _moveToSearch,
+          ),
+          Container(
+            height: 5.0,
+          ),
           Center(
-            child: Text("show more", style: TextStyle(color: Colors.blueGrey),),
+            child: Text(
+              "show more",
+              style: TextStyle(color: Colors.blueGrey),
+            ),
           )
         ],
       ),
@@ -133,4 +138,17 @@ class _HomePageState extends State<HomePage> {
   }
 
   void initPlatformState() {}
+
+  void _moveToSearch() {
+    // Navigator.of(context).push(PageRouteBuilder(
+    //   maintainState: true,
+    //   opaque: true,
+    //   pageBuilder: (context, _, __) => new LocationSearchPage(),
+    // ));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LocationSearchPage(),
+        ));
+  }
 }

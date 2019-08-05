@@ -111,19 +111,9 @@ class TicketRow extends StatelessWidget {
         child: new Stack(
           children: <Widget>[
             TicketCard,
-            // TicketThumbnailRight,
-            // TicketThumbnailLeft,
             TicketThumbnailIcon
           ],
         ));
-
-    void _moveToLogin() {
-    Navigator.of(context).push(PageRouteBuilder(
-      maintainState: true,
-      opaque: true,
-      pageBuilder: (context, _, __) => new LoginPage(),
-    ));
-  }
 
   }
 }
