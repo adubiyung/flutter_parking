@@ -18,6 +18,7 @@ class OrderListview extends StatelessWidget {
               title: Text("Orders"),
               backgroundColor: _mainColor,
               pinned: true,
+              leading: new Container(),
               // expandedHeight: 80.0,
               // flexibleSpace: FlexibleSpaceBar(
               //   background: Image.network(

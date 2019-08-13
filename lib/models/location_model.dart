@@ -1,4 +1,4 @@
-class Location_model {
+class Location_model{
   final String idLocation;
   final String nameLocation;
   final String imageLocation;
@@ -57,4 +57,40 @@ List<Location_model> locationList = [
       rateLocation: "4.8",
       priceLocation: "Rp 5.000/day",
       spaceLocation: "60 lot"),
+  const Location_model(
+      idLocation: "1",
+      nameLocation: "Taman Kesehatan",
+      imageLocation: "",
+      areaLocation: "BSD, Tangerang Selatan",
+      typeLocation: "Parking Space",
+      rateLocation: "4.8",
+      priceLocation: "Rp 5.000/day",
+      spaceLocation: "60 lot"),
+  const Location_model(
+      idLocation: "1",
+      nameLocation: "Sabang",
+      imageLocation: "",
+      areaLocation: "Sabang, Jakarta Pusat",
+      typeLocation: "Parking Street",
+      rateLocation: "4.6",
+      priceLocation: "Rp 5.000/hour",
+      spaceLocation: "243 lot"),
+  const Location_model(
+      idLocation: "1",
+      nameLocation: "Taman Kesehatan",
+      imageLocation: "",
+      areaLocation: "BSD, Tangerang Selatan",
+      typeLocation: "Parking Space",
+      rateLocation: "4.8",
+      priceLocation: "Rp 5.000/day",
+      spaceLocation: "60 lot"),
+  const Location_model(
+      idLocation: "1",
+      nameLocation: "Sabang",
+      imageLocation: "",
+      areaLocation: "Sabang, Jakarta Pusat",
+      typeLocation: "Parking Street",
+      rateLocation: "4.6",
+      priceLocation: "Rp 5.000/hour",
+      spaceLocation: "243 lot"),
 ];

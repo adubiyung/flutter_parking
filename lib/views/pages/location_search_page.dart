@@ -11,6 +11,7 @@ class LocationSearchPage extends StatefulWidget {
 
 class _LocationSearchPageState extends State<LocationSearchPage>
     with TickerProviderStateMixin {
+  TabController _tabController;
   Color _mainColor = Color(0xFFF48023);
   final TextEditingController _filter = new TextEditingController();
   final model = new Location_model();
@@ -24,13 +25,13 @@ class _LocationSearchPageState extends State<LocationSearchPage>
 
   @override
   void initState() {
-    super.initState();
-
     scrollController = ScrollController()
       ..addListener(() {
         setDialVisible(scrollController.position.userScrollDirection ==
             ScrollDirection.forward);
       });
+    _tabController = TabController(length: 2, vsync: this);
+    super.initState();
   }
 
   void setDialVisible(bool value) {
@@ -44,6 +45,7 @@ class _LocationSearchPageState extends State<LocationSearchPage>
     Widget _tabWidget = new TabBar(
       labelColor: Colors.white,
       unselectedLabelColor: Colors.black26,
+      controller: _tabController,
       tabs: <Widget>[
         new Tab(
           child: Text(
@@ -56,38 +58,26 @@ class _LocationSearchPageState extends State<LocationSearchPage>
       ],
     );
 
-    Widget _bodyTabFirst = new Scaffold(
-      body: new Stack(
-        alignment: Alignment.bottomRight,
-        children: <Widget>[
-          Container(
-            child: LocationListview(),
-          ),
-          buildSpeedDial(),
-        ],
-      ),
+    Widget _bodyTabFirst = new Stack(
+      alignment: Alignment.bottomRight,
+      children: <Widget>[
+        LocationListview(),
+        buildSpeedDial(),
+      ],
     );
 
-    Widget _bodyTabSecond = new Scaffold(
-      body: new Stack(
-        alignment: Alignment.bottomRight,
-        children: <Widget>[
-          Container(
-            child: LocationListview(),
-          ),
-        ],
-      ),
-    );
+    Widget _bodyTabSecond = LocationListview();
 
     Widget _body = new TabBarView(
+      controller: _tabController,
       children: <Widget>[_bodyTabFirst, _bodyTabSecond],
     );
 
     Widget _compileWidget = new DefaultTabController(
       length: 2,
-      child: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return <Widget>[
+      child: Scaffold(
+        body: CustomScrollView(
+          slivers: <Widget>[
             SliverAppBar(
               actions: <Widget>[
                 Padding(
@@ -105,9 +95,9 @@ class _LocationSearchPageState extends State<LocationSearchPage>
               flexibleSpace: FlexibleSpaceBar(),
               bottom: _tabWidget,
             ),
-          ];
-        },
-        body: _body,
+            SliverFillRemaining(child: _body),
+          ],
+        ),
       ),
     );
 

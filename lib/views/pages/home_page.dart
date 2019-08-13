@@ -84,10 +84,13 @@ class _HomePageState extends State<HomePage> {
             height: 5.0,
           ),
           Center(
-            child: Text(
+            child: GestureDetector(
+              child: Text(
               "show more",
               style: TextStyle(color: Colors.blueGrey),
             ),
+            onTap: _moveToSearch,
+            )
           )
         ],
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/models/location_model.dart';
-import 'package:flutter_parking_project/views/pages/location_search_page.dart';
+import 'package:flutter_parking_project/views/pages/location_detail_page.dart';
 
 class LocationRow extends StatelessWidget {
   final Location_model location_model;
@@ -9,24 +9,6 @@ class LocationRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _locationCardIcon = new ListTile(
-      contentPadding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 35.0),
-      leading: Container(
-        padding: EdgeInsets.only(right: 15.0),
-        decoration: BoxDecoration(
-          border: Border(right: BorderSide(width: 1.0, color: Colors.grey)),
-        ),
-        child: Icon(Icons.drive_eta),
-      ),
-      trailing: Icon(
-        Icons.arrow_forward_ios,
-        size: 15.0,
-      ),
-      // onTap: () {
-      //   Navigator.push(context, MaterialPageRoute(builder: (context) => DetailTicketPage()));
-      // },
-    );
-
     final _locationLotIcon = new Container(
       child: Row(
         children: <Widget>[
@@ -131,14 +113,41 @@ class LocationRow extends StatelessWidget {
       ),
     );
 
+    final _locationCardIcon = new ListTile(
+      contentPadding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 35.0),
+      leading: Container(
+        padding: EdgeInsets.only(right: 15.0),
+        decoration: BoxDecoration(
+          border: Border(right: BorderSide(width: 1.0, color: Colors.grey)),
+        ),
+        child: Icon(Icons.drive_eta),
+      ),
+      trailing: Icon(
+        Icons.arrow_forward_ios,
+        size: 15.0,
+      ),
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    LocationDetailPage()));
+      },
+    );
+
     Widget _compileWidget = Container(
       height: 100.0,
       margin: const EdgeInsets.symmetric(
         vertical: 6.0,
         horizontal: 10.0,
       ),
-      child: new Stack(
-        children: <Widget>[_locationCard, _locationCardIcon],
+      child: new Scaffold(
+        body: Stack(
+          children: <Widget>[
+            _locationCard,
+            _locationCardIcon,
+          ],
+        ),
       ),
     );
 

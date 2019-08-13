@@ -1,10 +1,8 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/views/pages/account_page.dart';
 import 'package:flutter_parking_project/views/pages/home_page.dart';
 import 'package:flutter_parking_project/views/pages/order_page.dart';
-import 'package:flutter_parking_project/views/pages/qrcode_page.dart';
 import 'package:flutter_parking_project/views/pages/scan_page.dart';
 
 class LandingPage extends StatefulWidget {
@@ -19,8 +17,8 @@ class _LandingPageState extends State<LandingPage> {
 
   final _pageOption = [
     HomePage(),
+    ScanPage(),
     OrderPage(),
-    Qrcode_page(),
     AccountPage(),
   ];
 

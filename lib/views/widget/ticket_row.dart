@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/models/ticket.dart';
 import 'package:flutter_parking_project/views/pages/detail_ticket_page.dart';
-import 'package:flutter_parking_project/views/pages/login_page.dart';
 
 class TicketRow extends StatelessWidget {
   final Ticket ticket;
