@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_parking_project/views/pages/token_page.dart';
+import 'package:flutter_parking_project/views/pages/vehicle_page.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:qr_code_scanner/qr_scanner_overlay_shape.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 const flash_on = "FLASH ON";
 const flash_off = "FLASH OFF";
 const front_camera = "FRONT CAMERA";
 const back_camera = "BACK CAMERA";
+final FocusNode _firstFocus = FocusNode();
+final FocusNode _secondFocus = FocusNode();
+final FocusNode _thirdFocus = FocusNode();
+final FocusNode _fourthFocus = FocusNode();
+final FocusNode _fifthFocus = FocusNode();
 
 class ScanPage extends StatefulWidget {
   const ScanPage({
@@ -29,56 +37,115 @@ class _ScanPageState extends State<ScanPage> {
   Widget build(BuildContext context) {
     Widget _slideWidget = new Column(
       children: <Widget>[
+        //icon strip
         Center(
           child: Icon(Icons.minimize),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 10.0),
-          child: Center(
-            child: Text("More Option"),
+          padding: EdgeInsets.only(left: 10.0, top: 5.0),
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: new Text("another way"),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.only(top: 10.0, left: 15.0),
-          child: Row(
-            children: <Widget>[
-              Card(
-                margin: EdgeInsets.all(5.0),
-                child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-                  child: Column(
+        new Row(
+          children: <Widget>[
+            //option
+            Padding(
+              padding: EdgeInsets.only(top: 12.0, left: 15.0),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    height: 10.0,
+                  ),
+                  //button option
+                  new Row(
                     children: <Widget>[
-                      Icon(
-                        Icons.photo,
-                        size: 50,
+                      Column(
+                        children: <Widget>[
+                          ButtonTheme(
+                            minWidth: 30.0,
+                            height: 50.0,
+                            child: FlatButton(
+                              child: Icon(
+                                Icons.keyboard,
+                                size: 35,
+                              ),
+                              color: _mainColor,
+                              shape: new RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              onPressed: () {
+                                _moveToTokenPage();
+                              },
+                            ),
+                          ),
+                          Container(
+                            height: 5.0,
+                          ),
+                          Text(
+                            "Token",
+                            style: TextStyle(fontSize: 12),
+                          ),
+                        ],
                       ),
-                      Text("qr code"),
                     ],
                   ),
+                ],
+              ),
+            ),
+            // line
+            new Container(
+              padding: EdgeInsets.only(left: 12.0, right: 12.0),
+              height: 38.0,
+              width: 30.0,
+              decoration: BoxDecoration(
+                border: Border(
+                    right: BorderSide(width: 2.0, color: Colors.black54)),
+              ),
+            ),
+            //jarak
+            new Container(
+              width: 70.0,
+            ),
+            // vehicle option
+            GestureDetector(
+              onTap: () {
+                _moveToVehiclePage();
+              },
+              child: new Container(
+                width: 140.0,
+                height: 30.0,
+                padding: EdgeInsets.only(left: 15.0),
+                decoration: BoxDecoration(
+                  border: Border(
+                      left: BorderSide(width: 1.0, color: Colors.black54),
+                      top: BorderSide(width: 1.0, color: Colors.black54),
+                      right: BorderSide(width: 1.0, color: Colors.black54),
+                      bottom: BorderSide(width: 1.0, color: Colors.black54)),
                 ),
-              ),
-              Container(
-                width: 15.0,
-              ),
-              Card(
-                margin: EdgeInsets.all(5.0),
-                child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-                  child: Column(
-                    children: <Widget>[
-                      Icon(
-                        Icons.keyboard,
-                        size: 50,
+                child: new Row(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 3,
+                      child: Text("select vehicle"),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border(
+                            left: BorderSide(width: 1.0, color: Colors.black54),
+                          ),
+                        ),
+                        child: Icon(Icons.arrow_drop_down),
                       ),
-                      Text("unique code"),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ],
     );
@@ -114,28 +181,32 @@ class _ScanPageState extends State<ScanPage> {
             padding: const EdgeInsets.all(23.0),
             child: Align(
               alignment: Alignment.topRight,
-              child: FloatingActionButton(
-                child: Icon(
-                  _iconFlash,
-                  size: 30.0,
-                ),
-                backgroundColor: Colors.grey,
-                onPressed: () {
-                  if (controller != null) {
-                    controller.toggleFlash();
-                    if (_isFlashOn(flashState)) {
-                      setState(() {
-                        flashState = flash_off;
-                        _iconFlash = Icons.flash_on;
-                      });
-                    } else {
-                      setState(() {
-                        flashState = flash_on;
-                        _iconFlash = Icons.flash_off;
-                      });
+              child: new SizedBox(
+                width: 40.0,
+                height: 40.0,
+                child: FloatingActionButton(
+                  child: Icon(
+                    _iconFlash,
+                    size: 20.0,
+                  ),
+                  backgroundColor: Colors.grey,
+                  onPressed: () {
+                    if (controller != null) {
+                      controller.toggleFlash();
+                      if (_isFlashOn(flashState)) {
+                        setState(() {
+                          flashState = flash_off;
+                          _iconFlash = Icons.flash_on;
+                        });
+                      } else {
+                        setState(() {
+                          flashState = flash_on;
+                          _iconFlash = Icons.flash_off;
+                        });
+                      }
                     }
-                  }
-                },
+                  },
+                ),
               ),
             ),
           )
@@ -148,10 +219,6 @@ class _ScanPageState extends State<ScanPage> {
 
   _isFlashOn(String current) {
     return flash_on == current;
-  }
-
-  _isBackCamera(String current) {
-    return back_camera == current;
   }
 
   void _onQRViewCreated(QRViewController controller) {
@@ -167,5 +234,21 @@ class _ScanPageState extends State<ScanPage> {
   void dispose() {
     controller.dispose();
     super.dispose();
+  }
+
+  void _moveToTokenPage() {
+    Navigator.of(context).push(PageRouteBuilder(
+      maintainState: true,
+      opaque: true,
+      pageBuilder: (context, _, __) => new TokenPage(),
+    ));
+  }
+
+  void _moveToVehiclePage() {
+    Navigator.of(context).push(PageRouteBuilder(
+      maintainState: true,
+      opaque: true,
+      pageBuilder: (context, _, __) => new VehiclePage(),
+    ));
   }
 }
