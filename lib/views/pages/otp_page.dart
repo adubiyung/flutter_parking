@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/views/pages/landing_page.dart';
+import 'package:flutter_parking_project/views/widget/color_library.dart';
 
 final FocusNode _firstFocus = FocusNode();
 final FocusNode _secondFocus = FocusNode();
@@ -40,14 +41,17 @@ class _OtpPageState extends State<OtpPage> {
             Text(
               'Masukan Kode',
               textAlign: TextAlign.center,
+              style: TextStyle(color: ColorLibrary.regularFontBlack),
             ),
             Text(
               'Kami telah mengirimkan sebuah SMS dengan kode aktivasi ke handphone kamu',
               textAlign: TextAlign.center,
+              style: TextStyle(color: ColorLibrary.regularFontBlack),
             ),
             Text(
               '+62 xxx xxxxxx',
               textAlign: TextAlign.center,
+              style: TextStyle(color: ColorLibrary.regularFontBlack),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -138,10 +142,10 @@ class _OtpPageState extends State<OtpPage> {
 
     Widget _compileWidget = new Scaffold(
       appBar: AppBar(
-        backgroundColor: _mainColor,
-        title: Text('Verifikasi nomor'),
+        backgroundColor: ColorLibrary.primary,
+        title: Text('Verification',),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: ColorLibrary.background,
       body: Material(
         child: Column(
           children: <Widget>[

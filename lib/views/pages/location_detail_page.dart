@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/views/pages/lot_select_page.dart';
 import 'package:flutter_parking_project/views/pages/topup_page.dart';
 import 'package:flutter_parking_project/views/pages/vehicle_page.dart';
-import 'package:flutter_parking_project/views/widget/lot_listview.dart';
 import 'package:sliver_fab/sliver_fab.dart';
 import 'package:intl/intl.dart';
 
@@ -22,50 +21,54 @@ class _LocationDetailPageState extends State<LocationDetailPage> {
   @override
   Widget build(BuildContext context) {
     Widget _locationWidget = new Card(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Text(
-            "Taman Kesehatan",
-            style: TextStyle(fontSize: 23),
-          ),
-          Container(
-            height: 5.0,
-          ),
-          Text(
-              "Jl. Boulevard BSD Tim., Lengkong Gudang, Kec. Serpong, Kota Tangerang Selatan, Banten 15321"),
-          Column(
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Card(
-                    child: Column(
-                      children: <Widget>[
-                        Icon(
-                          Icons.drive_eta,
-                          size: 40,
-                        ),
-                        Text("12 " + "lot")
-                      ],
+      child: new Padding(
+        padding: EdgeInsets.all(5.0),
+        child: new Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Text(
+              "Taman Kesehatan",
+              style: TextStyle(fontSize: 23, fontFamily: 'Work Sans', fontWeight: FontWeight.w500),
+            ),
+            Container(
+              height: 5.0,
+            ),
+            Text(
+                "Jl. Boulevard BSD Tim., Lengkong Gudang, Kec. Serpong, Kota Tangerang Selatan, Banten 15321",
+                style: TextStyle(fontSize: 14, fontFamily: 'Work Sans', fontWeight: FontWeight.w300),),
+            Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Card(
+                      child: Column(
+                        children: <Widget>[
+                          Icon(
+                            Icons.drive_eta,
+                            size: 40,
+                          ),
+                          Text("12 " + "lot", style: TextStyle(fontSize: 12, ),)
+                        ],
+                      ),
                     ),
-                  ),
-                  Card(
-                    child: Column(
-                      children: <Widget>[
-                        Icon(
-                          Icons.motorcycle,
-                          size: 40,
-                        ),
-                        Text("12 " + "lot")
-                      ],
+                    Card(
+                      child: Column(
+                        children: <Widget>[
+                          Icon(
+                            Icons.motorcycle,
+                            size: 40,
+                          ),
+                          Text("12 " + "lot")
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
 
@@ -413,20 +416,6 @@ class _LocationDetailPageState extends State<LocationDetailPage> {
       ),
     );
   }
-
-  // void _awaitValueFromList(BuildContext context) async {
-  //   // start the SecondScreen and wait for it to finish with a result
-  //   final result = await Navigator.push(
-  //       context,
-  //       MaterialPageRoute(
-  //         builder: (context) => LocationSearchPage(),
-  //       ));
-
-  //   // after the SecondScreen result comes back update the Text widget with it
-  //   setState(() {
-  //     namaLokasi = result;
-  //   });
-  // }
 
   void _moveToSelectLot() {
     Navigator.of(context).push(PageRouteBuilder(

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/models/location_model.dart';
 import 'package:flutter_parking_project/views/pages/location_detail_page.dart';
+import 'package:flutter_parking_project/views/widget/color_library.dart';
 
 class LocationRow extends StatelessWidget {
   final Location_model location_model;
   LocationRow(this.location_model);
-  Color _mainColor = Color(0xFFF48023);
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +15,15 @@ class LocationRow extends StatelessWidget {
           Icon(
             Icons.drive_eta,
             size: 13.0,
+            color: ColorLibrary.thinFontWhite,
           ),
           Text(
-            " " + location_model.spaceLocation,
-            style: TextStyle(fontSize: 10.0),
+            "  " + location_model.spaceLocation,
+            style: TextStyle(
+                fontSize: 10.0,
+                color: ColorLibrary.thinFontWhite,
+                fontFamily: 'Work Sans',
+                fontWeight: FontWeight.w300),
           ),
         ],
       ),
@@ -30,10 +35,14 @@ class LocationRow extends StatelessWidget {
           Icon(
             Icons.near_me,
             size: 13.0,
+            color: ColorLibrary.thinFontWhite,
           ),
           Text(
-            " " + "0.6 km",
-            style: TextStyle(fontSize: 10.0),
+            "  " + "0.6 km",
+            style: TextStyle(
+                fontSize: 10.0,
+                color: ColorLibrary.thinFontWhite,
+                fontFamily: 'Work Sans'),
           ),
         ],
       ),
@@ -50,12 +59,23 @@ class LocationRow extends StatelessWidget {
           ),
           Text(
             location_model.nameLocation,
-            style: TextStyle(fontSize: 15.0),
+            style: TextStyle(
+                fontSize: 14.0,
+                fontFamily: 'Work Sans',
+                fontWeight: FontWeight.w500,
+                color: ColorLibrary.regularFontWhite),
           ),
           Container(
             height: 4.0,
           ),
-          Text(location_model.areaLocation),
+          Text(
+            location_model.areaLocation,
+            style: TextStyle(
+                fontSize: 14.0,
+                fontFamily: 'Work Sans',
+                fontWeight: FontWeight.w500,
+                color: ColorLibrary.regularFontWhite),
+          ),
           Container(
             height: 5.0,
           ),
@@ -63,22 +83,32 @@ class LocationRow extends StatelessWidget {
             children: <Widget>[
               Icon(
                 Icons.star,
-                size: 13.0,
+                size: 12.0,
+                color: ColorLibrary.thinFontWhite,
               ),
               Text(
                 " " + location_model.rateLocation,
-                style: TextStyle(fontSize: 13.0),
+                style: TextStyle(
+                fontSize: 12.0,
+                fontFamily: 'Work Sans',
+                fontWeight: FontWeight.w300,
+                color: ColorLibrary.thinFontWhite),
               ),
               Container(
                 width: 15.0,
                 child: Icon(
                   Icons.lens,
                   size: 3.0,
+                  color: ColorLibrary.thinFontWhite,
                 ),
               ),
               Text(
                 location_model.typeLocation,
-                style: TextStyle(fontSize: 13.0),
+                style: TextStyle(
+                fontSize: 12.0,
+                fontFamily: 'Work Sans',
+                fontWeight: FontWeight.w300,
+                color: ColorLibrary.thinFontWhite),
               ),
             ],
           ),
@@ -101,12 +131,12 @@ class LocationRow extends StatelessWidget {
       height: 100.0,
       margin: EdgeInsets.only(left: 10.0, right: 10.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ColorLibrary.primary,
         shape: BoxShape.rectangle,
         borderRadius: BorderRadius.circular(5.0),
         boxShadow: <BoxShadow>[
           BoxShadow(
-              color: Colors.black12,
+              color: Colors.transparent,
               blurRadius: 10.0,
               offset: Offset(0.0, 10.0)),
         ],
@@ -120,18 +150,17 @@ class LocationRow extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border(right: BorderSide(width: 1.0, color: Colors.grey)),
         ),
-        child: Icon(Icons.drive_eta),
+        child: Icon(Icons.drive_eta,
+        color: ColorLibrary.thinFontWhite,),
       ),
       trailing: Icon(
         Icons.arrow_forward_ios,
         size: 15.0,
+        color: ColorLibrary.thinFontWhite,
       ),
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    LocationDetailPage()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => LocationDetailPage()));
       },
     );
 
@@ -142,6 +171,7 @@ class LocationRow extends StatelessWidget {
         horizontal: 10.0,
       ),
       child: new Scaffold(
+        backgroundColor: Colors.transparent,
         body: Stack(
           children: <Widget>[
             _locationCard,

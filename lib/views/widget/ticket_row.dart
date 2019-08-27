@@ -1,16 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/models/ticket.dart';
 import 'package:flutter_parking_project/views/pages/detail_ticket_page.dart';
+import 'package:flutter_parking_project/views/widget/color_library.dart';
 
 class TicketRow extends StatelessWidget {
   final Ticket ticket;
   TicketRow(this.ticket);
-  Color _mainColor = Color(0xFFF48023);
 
   @override
   Widget build(BuildContext context) {
+    final _ticketDot = new ListTile(
+      contentPadding: EdgeInsets.symmetric(vertical: 30.0),
+      leading: new Container(
+        // padding: EdgeInsets.only(right: 20.0),
+        width: 20.0,
+        height: 20.0,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: ColorLibrary.backgroundDark
+        ),
+      ),
+      trailing: new Container(
+        // padding: EdgeInsets.only(right: 20.0),
+        width: 20.0,
+        height: 20.0,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: ColorLibrary.backgroundDark,
+          boxShadow: <BoxShadow> [
+            new BoxShadow(
+              color: Colors.transparent
+            )
+          ],
+        ),
+      ),
+    );
 
-    final TicketThumbnailIcon = new ListTile(
+    final _ticketThumbnailIcon = new ListTile(
       contentPadding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 22.0),
       leading: Container(
         padding: EdgeInsets.only(right: 12.0),
@@ -33,7 +59,7 @@ class TicketRow extends StatelessWidget {
       },
     );
 
-    final baseTextStyle = const TextStyle(fontFamily: 'Poppins');
+    final baseTextStyle = const TextStyle(fontFamily: 'Work Sans');
     final regularTextStyle = baseTextStyle.copyWith(
         color: const Color(0xffb6b2df),
         fontSize: 9.0,
@@ -42,7 +68,7 @@ class TicketRow extends StatelessWidget {
     final headerTextStyle = baseTextStyle.copyWith(
         color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.w600);
 
-    final TicketCardContent = new Container(
+    final _ticketCardContent = new Container(
       margin: new EdgeInsets.fromLTRB(90.0, 16.0, 16.0, 16.0),
       constraints: new BoxConstraints.expand(),
       child: new Column(
@@ -83,17 +109,17 @@ class TicketRow extends StatelessWidget {
       ),
     );
 
-    final TicketCard = new Container(
-      child: TicketCardContent,
+    final _ticketCard = new Container(
+      child: _ticketCardContent,
       height: 124.0,
       margin: new EdgeInsets.only(left: 10.0, right: 10.0),
       decoration: new BoxDecoration(
-        color: new Color(0xFF333366),
+        color: ColorLibrary.primary,
         shape: BoxShape.rectangle,
         borderRadius: new BorderRadius.circular(8.0),
         boxShadow: <BoxShadow>[
           new BoxShadow(
-            color: Colors.black12,
+            color: Colors.transparent,
             blurRadius: 10.0,
             offset: new Offset(0.0, 10.0),
           ),
@@ -109,8 +135,9 @@ class TicketRow extends StatelessWidget {
         ),
         child: new Stack(
           children: <Widget>[
-            TicketCard,
-            TicketThumbnailIcon
+            _ticketCard,
+            _ticketThumbnailIcon,
+            _ticketDot
           ],
         ));
 

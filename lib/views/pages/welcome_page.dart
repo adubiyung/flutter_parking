@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_parking_project/views/pages/account_page.dart';
-import 'package:flutter_parking_project/views/pages/detail_ticket_page.dart';
-import 'package:flutter_parking_project/views/pages/home_page.dart';
 import 'package:flutter_parking_project/views/pages/login_page.dart';
-import 'package:flutter_parking_project/views/pages/order_page.dart';
 import 'package:flutter_parking_project/views/pages/register_page.dart';
+import 'package:flutter_parking_project/views/widget/color_library.dart';
 
 class WelcomePage extends StatefulWidget {
   @override
@@ -12,9 +9,6 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
-  Color _mainColor = Color(0xFFF48023);
-  Color _bgColor = Color(0xFF333333);
-  Color _whiteColor = Color(0xFFFFFFFF);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +18,7 @@ class _WelcomePageState extends State<WelcomePage> {
         fit: StackFit.expand,
         children: <Widget>[
           Container(
-            color: _mainColor,
+            color: ColorLibrary.primary,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -39,13 +33,17 @@ class _WelcomePageState extends State<WelcomePage> {
                     Text(
                       'Parkiran',
                       style: TextStyle(
-                          color: _whiteColor,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold),
+                        color: ColorLibrary.regularFontWhite,
+                        fontFamily: 'Work Sans',
+                        fontSize: 24,
+                      ),
                     ),
                     Text(
                       'Jangan Sampai Kamu Salah Parkir',
-                      style: TextStyle(color: _whiteColor),
+                      style: TextStyle(
+                          color: ColorLibrary.regularFontWhite,
+                          fontFamily: 'Work Sans',
+                          fontWeight: FontWeight.w200),
                     ),
                   ],
                 ),
@@ -62,11 +60,16 @@ class _WelcomePageState extends State<WelcomePage> {
                           ButtonTheme(
                             minWidth: 250.0,
                             child: RaisedButton(
-                              child: Text('MASUK'),
-                              textColor: _whiteColor,
-                              color: _mainColor,
+                              child: Text(
+                                'MASUK',
+                                style: TextStyle(
+                                    fontFamily: 'Work Sans',
+                                    fontWeight: FontWeight.w700,
+                                    color: ColorLibrary.regularFontBlack),
+                              ),
+                              color: ColorLibrary.secondary,
                               shape: RoundedRectangleBorder(
-                                side: BorderSide(color: _whiteColor),
+                                side: BorderSide(color: ColorLibrary.secondary),
                                 borderRadius: BorderRadius.circular(20.0),
                               ),
                               onPressed: _moveToLogin,
@@ -83,21 +86,22 @@ class _WelcomePageState extends State<WelcomePage> {
                               child: Container(
                                 margin: const EdgeInsets.only(
                                     left: 30.0, right: 20.0),
-                                child: Divider(
-                                  color: Colors.white
-                                ),
+                                child: Divider(color: ColorLibrary.regularFontWhite),
                               ),
                             ),
                             Text(
                               'ATAU',
-                              style: TextStyle(color: Colors.black45),
+                              style: TextStyle(
+                                  color: ColorLibrary.regularFontWhite,
+                                  fontFamily: 'Work Sans',
+                                  fontWeight: FontWeight.w200),
                             ),
                             Expanded(
                               child: Container(
                                 margin: const EdgeInsets.only(
                                     left: 20.0, right: 30.0),
                                 child: Divider(
-                                  color: _whiteColor,
+                                  color: ColorLibrary.regularFontWhite,
                                 ),
                               ),
                             ),
@@ -112,11 +116,16 @@ class _WelcomePageState extends State<WelcomePage> {
                           ButtonTheme(
                             minWidth: 250.0,
                             child: RaisedButton(
-                              child: Text('DAFTAR'),
-                              textColor: _mainColor,
-                              color: _whiteColor,
+                              child: Text(
+                                'DAFTAR',
+                                style: TextStyle(
+                                    fontFamily: 'Work Sans',
+                                    fontWeight: FontWeight.w700,
+                                    color: ColorLibrary.regularFontWhite),
+                              ),
+                              color: ColorLibrary.primaryDark,
                               shape: RoundedRectangleBorder(
-                                side: BorderSide(color: _whiteColor),
+                                side: BorderSide(color: ColorLibrary.primaryDark),
                                 borderRadius: BorderRadius.circular(20.0),
                               ),
                               onPressed: _moveToRegister,

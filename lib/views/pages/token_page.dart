@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_parking_project/views/pages/qrcode_page.dart';
+import 'package:flutter_parking_project/views/widget/color_library.dart';
 import 'package:virtual_keyboard/virtual_keyboard.dart';
 
 class TokenPage extends StatefulWidget {
@@ -11,11 +13,7 @@ class TokenPage extends StatefulWidget {
 class _TokenPageState extends State<TokenPage> {
   // Holds the text that user typed.
   String inputText = "";
-
-// True if shift enabled.
   bool shiftEnabled = false;
-
-// is true will show the numeric keyboard.
   bool isNumericMode = true;
 
   var txt = TextEditingController();
@@ -24,16 +22,23 @@ class _TokenPageState extends State<TokenPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: ColorLibrary.primary,
         elevation: 0.0,
-        iconTheme: IconThemeData(color: Colors.black54),
+        iconTheme: IconThemeData(color: ColorLibrary.thinFontWhite),
       ),
-      body: Center(
+      body: Container(
+        color: ColorLibrary.background,
         child: Column(
           children: <Widget>[
-            Container(height: 25,),
+            Container(
+              height: 25,
+            ),
             Text(
               "Input Your PIN",
+              style: TextStyle(
+                  color: ColorLibrary.thinFontBlack,
+                  fontFamily: 'Work Sans',
+                  fontSize: 14),
             ),
             Container(
               height: 25,
@@ -49,6 +54,12 @@ class _TokenPageState extends State<TokenPage> {
                     textAlign: TextAlign.center,
                     controller: txt,
                     style: TextStyle(letterSpacing: 25),
+                    onChanged: (String text) {
+                      if (txt.text.length == 6) {
+                        // _moveToCodePage();
+                        print("ini " + txt.text);
+                      }
+                    },
                   ),
                 ),
               ],
@@ -57,10 +68,10 @@ class _TokenPageState extends State<TokenPage> {
               child: Container(),
             ),
             Container(
-              color: Colors.white,
+              color: ColorLibrary.backgroundDark,
               child: VirtualKeyboard(
                 height: 300,
-                textColor: Colors.black54,
+                textColor: ColorLibrary.thinFontBlack,
                 type: VirtualKeyboardType.Numeric,
                 onKeyPress: _onKeyPress,
               ),
@@ -72,7 +83,10 @@ class _TokenPageState extends State<TokenPage> {
   }
 
   _printLatestValue() {
-    print("Second text field: ${txt.text}");
+    print("${txt.text}");
+    if (txt.text.length == 6) {
+      _moveToCodePage();     
+    }
   }
 
   /// Fired when the virtual keyboard key is pressed.
@@ -96,6 +110,7 @@ class _TokenPageState extends State<TokenPage> {
         case VirtualKeyboardKeyAction.Shift:
           shiftEnabled = !shiftEnabled;
           break;
+
         default:
       }
     }
@@ -106,8 +121,15 @@ class _TokenPageState extends State<TokenPage> {
   @override
   void initState() {
     super.initState();
-
     txt.addListener(_printLatestValue);
+  }
+
+  void _moveToCodePage() {
+    Navigator.of(context).push(PageRouteBuilder(
+      maintainState: true,
+      opaque: true,
+      pageBuilder: (context, _, __) => new QrcodePage(),
+    ));
   }
 }
 

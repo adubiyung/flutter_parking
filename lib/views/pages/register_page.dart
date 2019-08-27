@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/views/pages/login_page.dart';
 import 'package:flutter_parking_project/views/pages/otp_page.dart';
+import 'package:flutter_parking_project/views/widget/color_library.dart';
 
 var _nameCon = TextEditingController();
 var _emailCon = TextEditingController();
@@ -15,8 +16,6 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  Color _mainColor = Color(0xFFF48023);
-
   @override
   Widget build(BuildContext context) {
     Widget _logoWidget = Container(
@@ -44,7 +43,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 width: double.infinity,
                 child: Text(
                   'Daftar Baru',
-                  style: TextStyle(fontSize: 18.0, color: Colors.black),
+                  style: TextStyle(fontSize: 18.0, color: ColorLibrary.regularFontBlack, fontFamily: 'Work Sans'),
                 ),
               ),
               Column(
@@ -62,14 +61,17 @@ class _RegisterPageState extends State<RegisterPage> {
                       labelText: 'Nama Lengkap',
                       icon: Icon(
                         Icons.perm_identity,
-                        color: _nameFocus.hasFocus ? _mainColor : Colors.grey,
+                        color: _nameFocus.hasFocus
+                            ? ColorLibrary.primary
+                            : Colors.grey,
                       ),
                       focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: _mainColor),
+                        borderSide: BorderSide(color: ColorLibrary.primary),
                       ),
                       labelStyle: TextStyle(
-                          color:
-                              _nameFocus.hasFocus ? _mainColor : Colors.grey),
+                          color: _nameFocus.hasFocus
+                              ? ColorLibrary.primary
+                              : Colors.grey),
                     ),
                   ),
                   TextFormField(
@@ -84,14 +86,17 @@ class _RegisterPageState extends State<RegisterPage> {
                     decoration: InputDecoration(
                       labelText: 'Email',
                       labelStyle: TextStyle(
-                          color:
-                              _emailFocus.hasFocus ? _mainColor : Colors.grey),
+                          color: _emailFocus.hasFocus
+                              ? ColorLibrary.primary
+                              : Colors.grey),
                       focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: _mainColor),
+                        borderSide: BorderSide(color: ColorLibrary.primary),
                       ),
                       icon: Icon(
                         Icons.email,
-                        color: _emailFocus.hasFocus ? _mainColor : Colors.grey,
+                        color: _emailFocus.hasFocus
+                            ? ColorLibrary.primary
+                            : Colors.grey,
                       ),
                     ),
                   ),
@@ -101,13 +106,16 @@ class _RegisterPageState extends State<RegisterPage> {
                       labelText: 'No. HP',
                       icon: Icon(
                         Icons.phone_android,
-                        color: _phoneFocus.hasFocus ? _mainColor : Colors.grey,
+                        color: _phoneFocus.hasFocus
+                            ? ColorLibrary.primary
+                            : Colors.grey,
                       ),
                       labelStyle: TextStyle(
-                          color:
-                              _phoneFocus.hasFocus ? _mainColor : Colors.grey),
+                          color: _phoneFocus.hasFocus
+                              ? ColorLibrary.primary
+                              : Colors.grey),
                       focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: _mainColor),
+                        borderSide: BorderSide(color: ColorLibrary.primary),
                       ),
                     ),
                     textInputAction: TextInputAction.done,
@@ -125,8 +133,14 @@ class _RegisterPageState extends State<RegisterPage> {
                     ButtonTheme(
                       minWidth: double.infinity,
                       child: RaisedButton(
-                        child: Text('Daftar !'),
-                        color: _mainColor,
+                        color: ColorLibrary.primary,
+                        child: Text(
+                          'DAFTAR',
+                          style: TextStyle(
+                              color: ColorLibrary.regularFontWhite,
+                              fontFamily: 'Work Sans',
+                              fontWeight: FontWeight.w700),
+                        ),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0)),
                         onPressed: _moveToOTP,
@@ -141,14 +155,15 @@ class _RegisterPageState extends State<RegisterPage> {
                   children: <Widget>[
                     Text('sudah punya akun? '),
                     InkWell(
-                      splashColor: _mainColor,
+                      splashColor: ColorLibrary.secondary,
                       onTap: () {
                         _moveToLogin();
                       },
                       child: Text(
                         'Masuk',
                         style: TextStyle(
-                            color: _mainColor, fontWeight: FontWeight.bold),
+                            color: ColorLibrary.secondary,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
@@ -161,7 +176,7 @@ class _RegisterPageState extends State<RegisterPage> {
     );
 
     Widget _compileWidget = Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: ColorLibrary.background,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top: 35.0),

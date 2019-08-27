@@ -33,12 +33,13 @@ dependencies:
   google_maps_flutter: ^0.5.19+2
   fancy_bottom_navigation: ^0.3.2
   location: ^2.3.5
-  geolocator: ^5.1.1+1
+  geolocator: ^5.1.3
   flutter_speed_dial: ^1.2.1
   sliver_fab: ^1.0.0
   intl: ^0.15.8
   rflutter_alert: ^1.0.3
   virtual_keyboard: ^0.1.4
+  http: ^0.12.0+2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -62,6 +63,29 @@ flutter:
 
   assets:
     - assets/images/splash_img.png
+  
+  fonts:
+    - family: Work Sans
+      fonts:
+        - asset: assets/fonts/WorkSans-Black.ttf
+        - asset: assets/fonts/WorkSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/WorkSans-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/WorkSans-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/WorkSans-Light.ttf
+          weight: 300
+        - asset: assets/fonts/WorkSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/WorkSans-Regular.ttf
+        - asset: assets/fonts/WorkSans-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/WorkSans-Thin.ttf
+          weight: 100
+    - family: Monoton
+      fonts:
+        - asset: assets/fonts/Monoton-Regular.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

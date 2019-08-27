@@ -5,6 +5,7 @@ import 'package:flutter_parking_project/views/pages/home_page.dart';
 import 'package:flutter_parking_project/views/pages/order_page.dart';
 import 'package:flutter_parking_project/views/pages/qrcode_page.dart';
 import 'package:flutter_parking_project/views/pages/scan_page.dart';
+import 'package:flutter_parking_project/views/widget/color_library.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -12,7 +13,6 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  Color _mainColor = Color(0xFFF48023);
   int _page = 0;
   GlobalKey _navigationKey = GlobalKey();
 
@@ -20,9 +20,7 @@ class _LandingPageState extends State<LandingPage> {
     HomePage(),
     ScanPage(),
     OrderPage(),
-    // AccountPage(),
-    QrcodePage()
-    
+    AccountPage(),    
   ];
 
   @override
@@ -30,13 +28,15 @@ class _LandingPageState extends State<LandingPage> {
     Widget _compileWidget = Scaffold(
       bottomNavigationBar: FancyBottomNavigation(
         tabs: [
-          TabData(iconData: Icons.location_searching, title: "Booking"),
+          TabData(iconData: Icons.location_searching, title: "booking"),
           TabData(iconData: Icons.list, title: "OTS"),
-          TabData(iconData: Icons.line_style, title: "Orders"),
-          TabData(iconData: Icons.person, title: "Account"),
+          TabData(iconData: Icons.line_style, title: "orders"),
+          TabData(iconData: Icons.person, title: "account"),
         ],
-        circleColor: _mainColor,
-        inactiveIconColor: _mainColor,
+        textColor: ColorLibrary.regularFontWhite,
+        barBackgroundColor: ColorLibrary.primary,
+        circleColor: ColorLibrary.secondary,
+        inactiveIconColor: ColorLibrary.secondary,
         onTabChangedListener: (position) {
           setState(() {
             _page = position;

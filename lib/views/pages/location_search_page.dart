@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_parking_project/models/location_model.dart';
+import 'package:flutter_parking_project/views/widget/color_library.dart';
 import 'package:flutter_parking_project/views/widget/location_listview.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
@@ -12,7 +13,6 @@ class LocationSearchPage extends StatefulWidget {
 class _LocationSearchPageState extends State<LocationSearchPage>
     with TickerProviderStateMixin {
   TabController _tabController;
-  Color _mainColor = Color(0xFFF48023);
   final TextEditingController _filter = new TextEditingController();
   final model = new Location_model();
   Icon _searchIcon = new Icon(Icons.search);
@@ -43,8 +43,9 @@ class _LocationSearchPageState extends State<LocationSearchPage>
   @override
   Widget build(BuildContext context) {
     Widget _tabWidget = new TabBar(
-      labelColor: Colors.white,
-      unselectedLabelColor: Colors.black26,
+      indicatorColor: ColorLibrary.thinFontWhite,
+      labelColor: ColorLibrary.regularFontWhite,
+      unselectedLabelColor: ColorLibrary.thinFontWhite,
       controller: _tabController,
       tabs: <Widget>[
         new Tab(
@@ -58,15 +59,21 @@ class _LocationSearchPageState extends State<LocationSearchPage>
       ],
     );
 
-    Widget _bodyTabFirst = new Stack(
-      alignment: Alignment.bottomRight,
-      children: <Widget>[
-        LocationListview(),
-        buildSpeedDial(),
-      ],
+    Widget _bodyTabFirst = new Container(
+      color: ColorLibrary.backgroundDark,
+      child: new Stack(
+        alignment: Alignment.bottomRight,
+        children: <Widget>[
+          LocationListview(),
+          buildSpeedDial(),
+        ],
+      ),
     );
 
-    Widget _bodyTabSecond = LocationListview();
+    Widget _bodyTabSecond = new Container(
+      color: ColorLibrary.backgroundDark,
+      child: LocationListview(),
+    );
 
     Widget _body = new TabBarView(
       controller: _tabController,
@@ -88,7 +95,7 @@ class _LocationSearchPageState extends State<LocationSearchPage>
                   ),
                 )
               ],
-              backgroundColor: _mainColor,
+              backgroundColor: ColorLibrary.primaryDark,
               title: _appbarTitle,
               floating: true,
               pinned: true,
@@ -117,11 +124,11 @@ class _LocationSearchPageState extends State<LocationSearchPage>
           decoration: new InputDecoration(
             prefixIcon: new Icon(
               Icons.search,
-              color: Colors.black26,
+              color: ColorLibrary.thinFontWhite,
             ),
             hintText: 'Search...',
             focusedBorder: UnderlineInputBorder(
-              borderSide: const BorderSide(color: Colors.white),
+              borderSide: const BorderSide(color: ColorLibrary.thinFontWhite),
             ),
           ),
         );
@@ -142,7 +149,7 @@ class _LocationSearchPageState extends State<LocationSearchPage>
       animatedIconTheme: IconThemeData(size: 22.0),
       visible: dialVisible,
       curve: Curves.bounceIn,
-      backgroundColor: _mainColor,
+      backgroundColor: ColorLibrary.secondary,
       children: [
         SpeedDialChild(
           child: Icon(Icons.accessibility, color: Colors.white),

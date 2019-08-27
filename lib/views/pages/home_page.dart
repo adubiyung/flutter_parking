@@ -3,8 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/models/location_model.dart';
 import 'package:flutter_parking_project/views/pages/location_search_page.dart';
-import 'package:flutter_parking_project/views/widget/button_search.dart';
+import 'package:flutter_parking_project/views/widget/color_library.dart';
 import 'package:flutter_parking_project/views/widget/location_row.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
@@ -14,57 +15,104 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Color _mainColor = Color(0xFFF48023);
-
   GoogleMapController _mapController;
-  Completer<GoogleMapController> _controller = Completer();
-  PanelController _pc = new PanelController();
+  Geolocator _geolocator;
+  LatLng _currentPosition;
+  double _currentZoom;
+  StreamSubscription<Position> _positionStream;
+  Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
+  bool _shouldRecenterMap = true;
+  Timer _mapDragTimer;
 
-  // Map<String, double> currentLocation = new Map();
-  // StreamSubscription<Map<String, double>> _streamSubscription;
+  @override
+  void initState() {
+    super.initState();
 
-  // Location _location = new Location();
+    _currentPosition = LatLng(-6.175048, 106.827127);
+    _currentZoom = 17.5;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   currentLocation['latitude'] = 0.0;
-  //   currentLocation['longitude'] = 0.0;
+    _initLocationService();
+  }
 
-  //   initPlatformState();
-  //   _streamSubscription = _location.onLocationChanged.listen((Map<String, double> result) {
-  //     setState(() {
-  //       currentLocation = result;
-  //     });
-  //   });
-  // }
+  Future<void> _initLocationService() async {
+    _geolocator = Geolocator();
+    var locationOptions = LocationOptions(accuracy: LocationAccuracy.best);
 
-  static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
+    try {
+      _positionStream =
+          _geolocator.getPositionStream(locationOptions).listen((position) {
+        if (position != null) {
+          _updateCurrentPosition(position);
+        }
+      });
+    } on Exception catch (_) {
+      print("Permission denied");
+    }
+  }
 
-  static final CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(6.222222, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
+  @override
+  void dispose() {
+    _positionStream.cancel();
+    super.dispose();
+  }
+
+  void _updateCurrentPosition(Position position) {
+    _currentPosition = LatLng(position.latitude, position.longitude);
+
+    _moveMarker(position);
+    _refreshCameraPosition();
+    _geocodeCurrentPosition();
+  }
+
+  void _moveMarker(Position position) {
+    var markerId = MarkerId("currentPos");
+    setState(() {
+      markers[markerId] =
+          Marker(markerId: markerId, position: _currentPosition);
+    });
+  }
+
+  void _refreshCameraPosition() {
+    if (_mapController != null && _shouldRecenterMap) {
+      _mapController.animateCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(target: _currentPosition, zoom: _currentZoom),
+      ));
+    }
+  }
+
+  void _geocodeCurrentPosition() async {
+    var resultList = await _geolocator.placemarkFromCoordinates(
+        _currentPosition.latitude, _currentPosition.longitude,
+        localeIdentifier: "id-ID");
+
+    if (resultList.length > 0) {
+      Placemark firstResult = resultList[0];
+
+      String textResult = firstResult.thoroughfare +
+          " " +
+          firstResult.subThoroughfare +
+          ", " +
+          firstResult.locality;
+
+      setState(() {
+        print("ini adalah region = " + textResult);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-
     Widget _topWidget = new Container(
       margin: EdgeInsets.only(top: 15.0),
-      child: Row(
+      child: Column(
         children: <Widget>[
           Align(
             alignment: Alignment.topCenter,
             child: Icon(
-              Icons.keyboard_arrow_up,
+              Icons.maximize,
             ),
           ),
-          ButtonSearch(),
+          //ButtonSearch(),
         ],
       ),
     );
@@ -84,19 +132,19 @@ class _HomePageState extends State<HomePage> {
             height: 5.0,
           ),
           Center(
-            child: GestureDetector(
-              child: Text(
+              child: GestureDetector(
+            child: Text(
               "show more",
-              style: TextStyle(color: Colors.blueGrey),
+              style: TextStyle(color: ColorLibrary.thinFontWhite),
             ),
             onTap: _moveToSearch,
-            )
-          )
+          ))
         ],
       ),
     );
 
     Widget _slideWidget = new Container(
+      color: ColorLibrary.backgroundDark,
       child: Column(
         children: <Widget>[_topWidget, _middleWidget],
       ),
@@ -109,24 +157,25 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         children: <Widget>[
           GoogleMap(
-            onMapCreated: (GoogleMapController controller) {
-              _controller.complete(controller);
-            },
-            initialCameraPosition: _kGooglePlex,
             mapType: MapType.normal,
             myLocationEnabled: true,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Align(
-              alignment: Alignment.topRight,
-              child: FloatingActionButton(
-                onPressed: () => print('button pressed'),
-                materialTapTargetSize: MaterialTapTargetSize.padded,
-                backgroundColor: Colors.green,
-                child: const Icon(Icons.map, size: 36.0),
-              ),
-            ),
+
+            initialCameraPosition:
+                CameraPosition(target: _currentPosition, zoom: _currentZoom),
+            onMapCreated: (controller) {
+              _mapController = controller;
+            },
+            onCameraMove: (cameraPosition) {
+              _currentZoom = cameraPosition.zoom;
+              _shouldRecenterMap = false; 
+              if (_mapDragTimer != null && _mapDragTimer.isActive) {
+                _mapDragTimer.cancel();
+              }
+              _mapDragTimer = Timer(Duration(seconds: 3), () {
+                _shouldRecenterMap = true;
+              });
+            },
+            markers: Set<Marker>.of(markers.values),
           ),
         ],
       ),
@@ -135,19 +184,7 @@ class _HomePageState extends State<HomePage> {
     return _compileWidget;
   }
 
-  Future<void> _goToTheLake() async {
-    final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
-  }
-
-  void initPlatformState() {}
-
   void _moveToSearch() {
-    // Navigator.of(context).push(PageRouteBuilder(
-    //   maintainState: true,
-    //   opaque: true,
-    //   pageBuilder: (context, _, __) => new LocationSearchPage(),
-    // ));
     Navigator.push(
         context,
         MaterialPageRoute(
