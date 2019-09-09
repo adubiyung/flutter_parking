@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/views/pages/lot_select_page.dart';
 import 'package:flutter_parking_project/views/pages/topup_page.dart';
 import 'package:flutter_parking_project/views/pages/vehicle_page.dart';
-import 'package:sliver_fab/sliver_fab.dart';
+import 'package:flutter_parking_project/views/widget/color_library.dart';
 import 'package:intl/intl.dart';
 
 class LocationDetailPage extends StatefulWidget {
@@ -48,7 +48,7 @@ class _LocationDetailPageState extends State<LocationDetailPage> {
                             Icons.drive_eta,
                             size: 40,
                           ),
-                          Text("12 " + "lot", style: TextStyle(fontSize: 12, ),)
+                          Text("12 " + "lot", style: TextStyle(fontFamily: 'Work Sans'),)
                         ],
                       ),
                     ),
@@ -59,7 +59,7 @@ class _LocationDetailPageState extends State<LocationDetailPage> {
                             Icons.motorcycle,
                             size: 40,
                           ),
-                          Text("12 " + "lot")
+                          Text("12 " + "lot", style: TextStyle(fontFamily: 'Work Sans'),)
                         ],
                       ),
                     ),
@@ -91,7 +91,7 @@ class _LocationDetailPageState extends State<LocationDetailPage> {
           ],
         ),
       ),
-      title: Text("select vehicle"),
+      title: Text("select vehicle", style: TextStyle(fontFamily: 'Work Sans'),),
       trailing: Padding(
         padding: EdgeInsets.only(right: 12.0),
         child: Icon(Icons.arrow_forward_ios),
@@ -120,7 +120,7 @@ class _LocationDetailPageState extends State<LocationDetailPage> {
           ],
         ),
       ),
-      title: Text("select lot"),
+      title: Text("select lot", style: TextStyle(fontFamily: 'Work Sans'),),
       trailing: Padding(
         padding: EdgeInsets.only(right: 12.0),
         child: Icon(Icons.arrow_forward_ios),
@@ -149,7 +149,7 @@ class _LocationDetailPageState extends State<LocationDetailPage> {
           ],
         ),
       ),
-      title: Text(dateSelect),
+      title: Text(dateSelect, style: TextStyle(fontFamily: 'Work Sans'),),
       trailing: Padding(
         padding: EdgeInsets.only(right: 12.0),
         child: Icon(Icons.arrow_forward_ios),
@@ -260,13 +260,13 @@ class _LocationDetailPageState extends State<LocationDetailPage> {
                       Container(
                         width: 3.0,
                       ),
-                      Text("LinkAJa")
+                      Text("LinkAJa", style: TextStyle(fontFamily: 'Work Sans'),)
                     ],
                   ),
                   new Container(
                     height: 7.0,
                   ),
-                  new Text("Rp 300.000"),
+                  new Text("Rp 300.000", style: TextStyle(fontFamily: 'Work Sans'),),
                 ],
               ),
               onTap: () {
@@ -294,13 +294,13 @@ class _LocationDetailPageState extends State<LocationDetailPage> {
                     Container(
                       width: 3.0,
                     ),
-                    Text("Voucher"),
+                    Text("Voucher", style: TextStyle(fontFamily: 'Work Sans'),),
                   ],
                 ),
                 Container(
                   height: 7.0,
                 ),
-                Text("kodevoucher"),
+                Text("kodevoucher", style: TextStyle(fontFamily: 'Work Sans'),),
               ],
             ),
           ],
@@ -313,10 +313,11 @@ class _LocationDetailPageState extends State<LocationDetailPage> {
       child: Column(
         children: <Widget>[
           ButtonTheme(
+            buttonColor: ColorLibrary.secondary,
             minWidth: double.infinity,
             height: 50.0,
             child: RaisedButton(
-              child: Text("booking"),
+              child: Text("booking", style: TextStyle(fontFamily: 'Work Sans', color: ColorLibrary.thinFontBlack),),
               onPressed: () {
                 print("object");
               },
@@ -355,40 +356,41 @@ class _LocationDetailPageState extends State<LocationDetailPage> {
       ),
     );
 
-    Widget _compileWidget = new Scaffold(
-      body: new Builder(
-        builder: (context) => new SliverFab(
-          floatingWidget: FloatingActionButton(
-            onPressed: () {
-              print("object");
-            },
-            child: Icon(Icons.map),
-          ),
-          floatingPosition: FloatingPosition(right: 16.0),
-          expandedHeight: 200.0,
-          slivers: <Widget>[
-            new SliverAppBar(
-              expandedHeight: 200.0,
-              pinned: true,
-              flexibleSpace: FlexibleSpaceBar(
-                title: Text(
-                  "Collapsing Toolbar",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16.0,
-                  ),
-                ),
-                background: Image.network(
-                  "https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350",
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            //isi
-          ],
-        ),
-      ),
-    );
+    // Widget _compileWidget = new Scaffold(
+    //   body: new Builder(
+    //     builder: (context) => new SliverFab(
+    //       floatingWidget: FloatingActionButton(
+    //         onPressed: () {
+    //           print("object");
+    //         },
+    //         child: Icon(Icons.map),
+    //       ),
+    //       floatingPosition: FloatingPosition(right: 16.0),
+    //       expandedHeight: 200.0,
+    //       slivers: <Widget>[
+    //         new SliverAppBar(
+    //           expandedHeight: 200.0,
+    //           pinned: true,
+    //           flexibleSpace: FlexibleSpaceBar(
+    //             title: Text(
+    //               "Collapsing Toolbar",
+    //               style: TextStyle(
+    //                 color: Colors.white,
+    //                 fontSize: 16.0,
+    //               ),
+    //             ),
+    //             background: Image.network(
+    //               "https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350",
+    //               fit: BoxFit.cover,
+    //             ),
+    //           ),
+    //         ),
+    //         //isi
+    //       ],
+    //     ),
+    //   ),
+    // );
+
     return new NestedScrollView(
       headerSliverBuilder: (BuildContext context, bool isScrolled) {
         return <Widget>[
@@ -397,11 +399,12 @@ class _LocationDetailPageState extends State<LocationDetailPage> {
             floating: false,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text("Taman Kesehatan"),
-              background: Image.network(
-                "",
-                fit: BoxFit.cover,
-              ),
+              centerTitle: true,
+              title: Text("Taman Kesehatan", style: TextStyle(fontFamily: 'Work Sans', fontSize: 20),),
+              // background: Image.network(
+              //   "",
+              //   fit: BoxFit.cover,
+              // ),              
             ),
           ),
         ];

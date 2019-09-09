@@ -12,7 +12,6 @@ class _WelcomePageState extends State<WelcomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     Widget _compile = new Scaffold(
       body: Stack(
         fit: StackFit.expand,

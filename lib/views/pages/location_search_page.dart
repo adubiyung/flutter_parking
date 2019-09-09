@@ -14,7 +14,7 @@ class _LocationSearchPageState extends State<LocationSearchPage>
     with TickerProviderStateMixin {
   TabController _tabController;
   final TextEditingController _filter = new TextEditingController();
-  final model = new Location_model();
+  final model = new LocationModel();
   Icon _searchIcon = new Icon(Icons.search);
   Widget _appbarTitle = new Text("Location");
   List filteredNames = new List();
@@ -109,10 +109,6 @@ class _LocationSearchPageState extends State<LocationSearchPage>
     );
 
     return _compileWidget;
-  }
-
-  void _getNames() async {
-    // final response =
   }
 
   void _searchPressed() {

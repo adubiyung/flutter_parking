@@ -1,4 +1,4 @@
-class Location_model{
+class LocationModel{
   final String idLocation;
   final String nameLocation;
   final String imageLocation;
@@ -8,7 +8,7 @@ class Location_model{
   final String priceLocation;
   final String spaceLocation;
 
-  const Location_model({
+  const LocationModel({
     this.idLocation,
     this.nameLocation,
     this.imageLocation,
@@ -20,8 +20,8 @@ class Location_model{
   });
 }
 
-List<Location_model> locationList = [
-  const Location_model(
+List<LocationModel> locationList = [
+  const LocationModel(
       idLocation: "1",
       nameLocation: "Taman Kesehatan",
       imageLocation: "",
@@ -30,7 +30,7 @@ List<Location_model> locationList = [
       rateLocation: "4.8",
       priceLocation: "Rp 5.000/day",
       spaceLocation: "60 lot"),
-  const Location_model(
+  const LocationModel(
       idLocation: "1",
       nameLocation: "Sabang",
       imageLocation: "",
@@ -39,7 +39,7 @@ List<Location_model> locationList = [
       rateLocation: "4.6",
       priceLocation: "Rp 5.000/hour",
       spaceLocation: "243 lot"),
-  const Location_model(
+  const LocationModel(
       idLocation: "1",
       nameLocation: "Taman Kebangetan",
       imageLocation: "",
@@ -48,7 +48,7 @@ List<Location_model> locationList = [
       rateLocation: "4.8",
       priceLocation: "Rp 5.000/day",
       spaceLocation: "60 lot"),
-  const Location_model(
+  const LocationModel(
       idLocation: "1",
       nameLocation: "Taman Ketiduran",
       imageLocation: "",
@@ -57,7 +57,7 @@ List<Location_model> locationList = [
       rateLocation: "4.8",
       priceLocation: "Rp 5.000/day",
       spaceLocation: "60 lot"),
-  const Location_model(
+  const LocationModel(
       idLocation: "1",
       nameLocation: "Taman Kesehatan",
       imageLocation: "",
@@ -66,7 +66,7 @@ List<Location_model> locationList = [
       rateLocation: "4.8",
       priceLocation: "Rp 5.000/day",
       spaceLocation: "60 lot"),
-  const Location_model(
+  const LocationModel(
       idLocation: "1",
       nameLocation: "Sabang",
       imageLocation: "",
@@ -75,7 +75,7 @@ List<Location_model> locationList = [
       rateLocation: "4.6",
       priceLocation: "Rp 5.000/hour",
       spaceLocation: "243 lot"),
-  const Location_model(
+  const LocationModel(
       idLocation: "1",
       nameLocation: "Taman Kesehatan",
       imageLocation: "",
@@ -84,7 +84,7 @@ List<Location_model> locationList = [
       rateLocation: "4.8",
       priceLocation: "Rp 5.000/day",
       spaceLocation: "60 lot"),
-  const Location_model(
+  const LocationModel(
       idLocation: "1",
       nameLocation: "Sabang",
       imageLocation: "",

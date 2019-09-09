@@ -16,7 +16,6 @@ class OtpPage extends StatefulWidget {
 class _OtpPageState extends State<OtpPage> {
   @override
   Widget build(BuildContext context) {
-    Color _mainColor = Color(0xFFF48023);
 
     Widget _logoWidget = Container(
       alignment: Alignment.center,

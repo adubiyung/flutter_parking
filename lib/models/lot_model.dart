@@ -8,7 +8,7 @@ class LotModel {
   const LotModel({this.idLot, this.nameLot, this.sideLot, this.sideTypeLot, this.onChange});
 }
 
-List<LotModel> LotList = [
+List<LotModel> lotList = [
   const LotModel(idLot: "1", nameLot: "A2", sideLot: "Barat", sideTypeLot: "A"),
   const LotModel(idLot: "2", nameLot: "A3", sideLot: "Barat", sideTypeLot: "A"),
   const LotModel(idLot: "3", nameLot: "A4", sideLot: "Barat", sideTypeLot: "A"),

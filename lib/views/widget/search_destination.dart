@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 class SearchDestination extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Widget _cardContent = new Container(
-      
-    );
 
     Widget _cardWidget = new Container(
       width: double.infinity,

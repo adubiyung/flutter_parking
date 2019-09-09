@@ -9,7 +9,6 @@ import 'package:flutter/painting.dart';
 import 'package:flutter_parking_project/models/user_model.dart';
 import 'package:flutter_parking_project/views/pages/otp_page.dart';
 import 'package:flutter_parking_project/views/widget/color_library.dart';
-import 'package:flutter_parking_project/views/widget/constant_utils.dart';
 import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
@@ -20,7 +19,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  static final URL = ConstantUtils.URL_AUTH_PHONE;
 
   Future<UserModel> createPost(String url, {Map body}) async {
     return http.post(url, body: body).then((http.Response response) {
@@ -173,12 +171,15 @@ class _LoginPageState extends State<LoginPage> {
       );
 
   mainTest() async {
+    //untuk inputan request
     String url = 'http://10.0.2.2:8000/api/auth';
     Map map = {"user_phone": "081221631469"};
 
+    // cara cetak respon
     print(await apiRequest(url, map));
   }
 
+// untuk manggil respon
   Future<String> apiRequest(String url, Map jsonMap) async {
     HttpClient httpClient = new HttpClient();
     HttpClientRequest request = await httpClient.postUrl(Uri.parse(url));

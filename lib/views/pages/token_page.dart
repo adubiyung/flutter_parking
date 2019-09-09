@@ -132,9 +132,3 @@ class _TokenPageState extends State<TokenPage> {
     ));
   }
 }
-
-_fieldFocusChange(
-    BuildContext context, FocusNode currentFocus, FocusNode nextFocus) {
-  currentFocus.unfocus();
-  FocusScope.of(context).requestFocus(nextFocus);
-}

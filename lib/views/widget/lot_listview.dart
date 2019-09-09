@@ -25,8 +25,8 @@ class _LotListviewState extends State<LotListview> {
               padding: const EdgeInsets.symmetric(vertical: 12.0),
               sliver: new SliverList(
                 delegate: new SliverChildBuilderDelegate(
-                  (context, index) => LotRow(LotList[index]),
-                  childCount: LotList.length
+                  (context, index) => LotRow(lotList[index]),
+                  childCount: lotList.length
                 ),
               ),
             ),

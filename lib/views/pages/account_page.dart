@@ -1,4 +1,3 @@
-import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/views/widget/color_library.dart';
 
@@ -10,15 +9,15 @@ class AccountPage extends StatefulWidget {
 class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
-    Widget _topBackground = new Container(
-      height: 300.0,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(30),
-            bottomRight: Radius.circular(30),
-          ),
-          color: ColorLibrary.secondaryAccent),
-    );
+    // Widget _topBackground = new Container(
+    //   height: 300.0,
+    //   decoration: BoxDecoration(
+    //       borderRadius: BorderRadius.only(
+    //         bottomLeft: Radius.circular(30),
+    //         bottomRight: Radius.circular(30),
+    //       ),
+    //       color: ColorLibrary.secondaryAccent),
+    // );
 
     Widget _compileWidget = new Scaffold(
       backgroundColor: Colors.grey,

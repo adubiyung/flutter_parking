@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/models/lot_model.dart';
-import 'package:flutter_parking_project/models/topup_model.dart';
 
 class LotRow extends StatelessWidget {
-  LotModel _lotModel;
+  final LotModel _lotModel;
   LotRow(this._lotModel);
-  bool _isSelected = false;
+  final bool _isSelected = false;
 
   @override
   Widget build(BuildContext context) {

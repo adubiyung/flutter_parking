@@ -29,8 +29,8 @@ class VehicleRow extends StatelessWidget {
             Text(_vehicle.merkVehicle + " " + _vehicle.modelVehicle),
             Row(
               children: <Widget>[
-                Text(_vehicle.numberVehicle + " - "),
-                Text(_vehicle.yearVehicle),
+                Text(_vehicle.numberVehicle + " - ", style: TextStyle(fontFamily: 'Work Sans'),),
+                Text(_vehicle.yearVehicle, style: TextStyle(fontFamily: 'Work Sans'),),
               ],
             ),
           ],

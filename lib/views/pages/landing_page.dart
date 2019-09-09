@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_parking_project/views/pages/account_page.dart';
 import 'package:flutter_parking_project/views/pages/home_page.dart';
 import 'package:flutter_parking_project/views/pages/order_page.dart';
-import 'package:flutter_parking_project/views/pages/qrcode_page.dart';
 import 'package:flutter_parking_project/views/pages/scan_page.dart';
 import 'package:flutter_parking_project/views/widget/color_library.dart';
 
@@ -14,7 +13,6 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
   int _page = 0;
-  GlobalKey _navigationKey = GlobalKey();
 
   final _pageOption = [
     HomePage(),

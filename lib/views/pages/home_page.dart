@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   GoogleMapController _mapController;
   Geolocator _geolocator;
   LatLng _currentPosition;
@@ -27,10 +27,8 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-
     _currentPosition = LatLng(-6.175048, 106.827127);
     _currentZoom = 17.5;
-
     _initLocationService();
   }
 
@@ -55,6 +53,7 @@ class _HomePageState extends State<HomePage> {
     _positionStream.cancel();
     super.dispose();
   }
+
 
   void _updateCurrentPosition(Position position) {
     _currentPosition = LatLng(position.latitude, position.longitude);
@@ -94,9 +93,11 @@ class _HomePageState extends State<HomePage> {
           ", " +
           firstResult.locality;
 
-      setState(() {
-        print("ini adalah region = " + textResult);
-      });
+      // if (mounted) {
+      //   setState(() {
+      //     print("ini adalah region = " + textResult);
+      //   });
+      // }
     }
   }
 
@@ -159,7 +160,6 @@ class _HomePageState extends State<HomePage> {
           GoogleMap(
             mapType: MapType.normal,
             myLocationEnabled: true,
-
             initialCameraPosition:
                 CameraPosition(target: _currentPosition, zoom: _currentZoom),
             onMapCreated: (controller) {
@@ -167,7 +167,7 @@ class _HomePageState extends State<HomePage> {
             },
             onCameraMove: (cameraPosition) {
               _currentZoom = cameraPosition.zoom;
-              _shouldRecenterMap = false; 
+              _shouldRecenterMap = false;
               if (_mapDragTimer != null && _mapDragTimer.isActive) {
                 _mapDragTimer.cancel();
               }

@@ -30,8 +30,8 @@ class _LotSelectPageState extends State<LotSelectPage> {
                         padding: const EdgeInsets.symmetric(vertical: 12.0),
                         sliver: new SliverList(
                           delegate: new SliverChildBuilderDelegate(
-                              (context, index) => ListviewLeft(LotList[index]),
-                              childCount: LotList.length),
+                              (context, index) => ListviewLeft(lotList[index]),
+                              childCount: lotList.length),
                         ),
                       ),
                     ],
@@ -51,8 +51,8 @@ class _LotSelectPageState extends State<LotSelectPage> {
                         padding: const EdgeInsets.symmetric(vertical: 12.0),
                         sliver: new SliverList(
                           delegate: new SliverChildBuilderDelegate(
-                              (context, index) => ListviewRight(LotList[index]),
-                              childCount: LotList.length),
+                              (context, index) => ListviewRight(lotList[index]),
+                              childCount: lotList.length),
                         ),
                       ),
                     ],
@@ -68,9 +68,9 @@ class _LotSelectPageState extends State<LotSelectPage> {
 }
 
 class ListviewLeft extends StatelessWidget {
-  LotModel _lotModel;
+  final LotModel _lotModel;
   ListviewLeft(this._lotModel);
-  bool _isSelected = false;
+  final bool _isSelected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -93,9 +93,9 @@ class ListviewLeft extends StatelessWidget {
 }
 
 class ListviewRight extends StatelessWidget {
-  LotModel _lotModel;
+  final LotModel _lotModel;
   ListviewRight(this._lotModel);
-  bool _isSelected = false;
+  final bool _isSelected = false;
 
   @override
   Widget build(BuildContext context) {

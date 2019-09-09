@@ -4,8 +4,8 @@ import 'package:flutter_parking_project/views/pages/location_detail_page.dart';
 import 'package:flutter_parking_project/views/widget/color_library.dart';
 
 class LocationRow extends StatelessWidget {
-  final Location_model location_model;
-  LocationRow(this.location_model);
+  final LocationModel locationModel;
+  LocationRow(this.locationModel);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class LocationRow extends StatelessWidget {
             color: ColorLibrary.thinFontWhite,
           ),
           Text(
-            "  " + location_model.spaceLocation,
+            "  " + locationModel.spaceLocation,
             style: TextStyle(
                 fontSize: 10.0,
                 color: ColorLibrary.thinFontWhite,
@@ -58,7 +58,7 @@ class LocationRow extends StatelessWidget {
             height: 4.0,
           ),
           Text(
-            location_model.nameLocation,
+            locationModel.nameLocation,
             style: TextStyle(
                 fontSize: 14.0,
                 fontFamily: 'Work Sans',
@@ -69,7 +69,7 @@ class LocationRow extends StatelessWidget {
             height: 4.0,
           ),
           Text(
-            location_model.areaLocation,
+            locationModel.areaLocation,
             style: TextStyle(
                 fontSize: 14.0,
                 fontFamily: 'Work Sans',
@@ -87,7 +87,7 @@ class LocationRow extends StatelessWidget {
                 color: ColorLibrary.thinFontWhite,
               ),
               Text(
-                " " + location_model.rateLocation,
+                " " + locationModel.rateLocation,
                 style: TextStyle(
                 fontSize: 12.0,
                 fontFamily: 'Work Sans',
@@ -103,7 +103,7 @@ class LocationRow extends StatelessWidget {
                 ),
               ),
               Text(
-                location_model.typeLocation,
+                locationModel.typeLocation,
                 style: TextStyle(
                 fontSize: 12.0,
                 fontFamily: 'Work Sans',
